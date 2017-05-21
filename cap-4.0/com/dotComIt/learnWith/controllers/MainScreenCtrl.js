@@ -6,6 +6,7 @@
  angular.module('learnWith').controller('MainScreenCtrl', ['$scope','$location','$filter','UserModel','TaskModel','TaskService', function($scope,$location,$filter,UserModel,TaskModel,TaskService){
 
      $scope.title = 'Main View';
+     $scope.invoiceCount = 0;
      $scope.taskModelWrapper = {
          taskModel : TaskModel
      }
@@ -84,7 +85,7 @@
      }
 
      function loadTaskCategories(){
-         TaskService.loadTaskCategories().then(onTaskCategoriesLoadSuccess,onTaskLoadError)
+         TaskService.loadTaskCategories().then(onTaskCategoriesLoadSuccess,onTaskLoadError);
      }
 
      function onTaskCategoriesLoadSuccess(response){
@@ -138,15 +139,5 @@
      }
      onInit();
 
-        //testing code
-        $scope.setTotals = function(item){
-
-            if (item){
-              console.log("lol" );
-              console.log($scope );
-                $scope.invoiceCount += item.taskCategoryID*1;
-            }
-            console.log($scope.invoiceCount );
-        }
 
 }]);
